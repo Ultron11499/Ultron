@@ -86,20 +86,33 @@ h1{
     50%{transform:translateY(-15px);}
 }
 
-button{
+/* Button Container */
+.btn-container{
     margin-top:20px;
+}
+
+/* Buttons */
+button{
     padding:14px 35px;
     font-size:20px;
     border:none;
     border-radius:30px;
-    background:linear-gradient(45deg,#ff4081,#ff80ab);
     color:white;
     cursor:pointer;
     transition:0.3s;
+    margin:5px;
 }
 
 button:hover{
     transform:scale(1.1);
+}
+
+.surprise-btn{
+    background:linear-gradient(45deg,#ff4081,#ff80ab);
+}
+
+.next-btn{
+    background:linear-gradient(45deg,#7b2ff7,#9d4edd);
 }
 
 #message{
@@ -169,7 +182,10 @@ You are growing into someone truly wonderful!
 
 <div class="cake">🎂</div>
 
-<button onclick="openSurprise()">Open Surprise 🎁</button>
+<div class="btn-container">
+    <button class="surprise-btn" onclick="celebrate()">Open Surprise 🎁</button>
+    <button class="next-btn" onclick="goNext()">Next Page ➜</button>
+</div>
 
 <div id="message">
 🌸 Stay happy, keep shining, and always believe in yourself.  
@@ -197,7 +213,7 @@ function createRose(){
 
 setInterval(createRose,300);
 
-/* Fireworks */
+/* Fireworks + Message */
 function celebrate(){
 
 document.getElementById("message").style.display="block";
@@ -219,13 +235,9 @@ setTimeout(()=>fire.remove(),1000);
 }
 }
 
-/* Redirect Function */
-function openSurprise(){
-    celebrate();
-
-    setTimeout(()=>{
-        window.location.href="https://ultron11499.github.io/Ultron/index2.html";
-    },1500);
+/* Go to Next Page */
+function goNext(){
+    window.location.href="https://ultron11499.github.io/Ultron/index2.html";
 }
 
 /* Sparkle Effect */
