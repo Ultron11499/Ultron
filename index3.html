@@ -1,181 +1,276 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-  <title>14 Gifts for You</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>*{
+<title>14 Gifts for You</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
   box-sizing:border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
-  padding: 15px;
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+  background:
+  radial-gradient(circle at 20% 20%, #c3a6ff, transparent 40%),
+  radial-gradient(circle at 80% 80%, #ffb7d5, transparent 40%),
+  linear-gradient(135deg,#7f7fd5,#e684ae);
 }
 
-/* floating particles for premium feel */
+/* FLOATING PARTICLES */
+
 .particle{
-  position: fixed;
-  width:8px;
-  height:8px;
+  position:fixed;
+  width:7px;
+  height:7px;
   background:white;
   border-radius:50%;
-  opacity:.6;
+  opacity:.5;
   animation: float linear infinite;
-  pointer-events:none;
 }
 
 @keyframes float{
-  from{ transform: translate3d(0,100vh,0); }
-  to{ transform: translate3d(0,-10vh,0); }
+  from{ transform: translateY(100vh);}
+  to{ transform: translateY(-10vh);}
 }
 
-.gift-box {
-  width: 100%;
-  max-width: 420px; /* increased size */
-  background: rgba(255,255,255,0.95);
-  padding: 40px 28px; /* more inner space */
-  border-radius: 32px;
-  text-align: center;
-  box-shadow: 0 25px 70px rgba(0,0,0,.22);
-  backdrop-filter: blur(10px);
-  animation: cardEnter .8s cubic-bezier(.17,.67,.32,1.25);
-  transform: translateZ(0);
+/* STACKED CARD BACKGROUND (like preview image) */
+
+.stack{
+  position:absolute;
+  width:92%;
+  max-width:480px;
+  height:520px;
+  border-radius:40px;
+  background:rgba(255,255,255,.15);
+  filter:blur(2px);
+  transform:scale(.9) translateY(30px);
+}
+
+.stack::after{
+  content:"";
+  position:absolute;
+  inset:-20px;
+  border-radius:50px;
+  background:rgba(255,255,255,.08);
+}
+
+/* MAIN GLASS CARD */
+
+.gift-box{
+  position:relative;
+  width:94%;
+  max-width:460px;
+  padding:46px 32px;
+  border-radius:36px;
+  text-align:center;
+
+  background:rgba(255,255,255,.22);
+  backdrop-filter:blur(18px);
+
+  box-shadow:0 30px 90px rgba(0,0,0,.35);
+  animation:cardEnter .9s cubic-bezier(.17,.67,.32,1.2);
 }
 
 @keyframes cardEnter{
-  from{opacity:0; transform: translateY(40px) scale(.95);} 
-  to{opacity:1; transform: translateY(0) scale(1);} 
+  from{
+    opacity:0;
+    transform:translateY(60px) scale(.9);
+  }
 }
 
-h2 {
-  color: #673ab7;
-  margin-bottom: 10px;
-  letter-spacing: .5px;
+/* HEADING */
+
+h2{
+  font-size:30px;
+  margin-bottom:15px;
+  font-weight:800;
+
+  background:linear-gradient(90deg,#fff,#ffe0f3);
+  -webkit-background-clip:text;
+  color:transparent;
+
+  text-shadow:0 10px 25px rgba(255,255,255,.4);
 }
 
-/* Gift card animation */
+/* SLIDESHOW CARD */
+
+.slider{
+  position:relative;
+  overflow:hidden;
+  height:120px;
+}
+
 .gift-card{
-  margin-top:20px;
-  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-  border-radius:20px;
-  padding:28px 18px;
-  color:white;
-  font-size:22px;
-  font-weight:600;
-  min-height:95px;
+  position:absolute;
+  inset:0;
+  border-radius:26px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.18);
-  animation: giftReveal .5s ease;
-  will-change: transform;
+  padding:20px;
+  font-size:22px;
+  font-weight:600;
+  color:white;
+
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+  opacity:0;
+  transform:translateX(80px) scale(.9);
+  transition:.6s cubic-bezier(.17,.67,.32,1.25);
 }
 
-@keyframes giftReveal{
-  from{
-    opacity:0;
-    transform: scale(.85) rotateY(40deg);
-  }
-  to{
-    opacity:1;
-    transform: scale(1) rotateY(0);
-  }
+.gift-card.active{
+  opacity:1;
+  transform:translateX(0) scale(1);
 }
 
-button {
-  margin-top: 20px;
-  padding: 15px;
-  width:100%;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(45deg,#673ab7,#9575cd);
-  color: white;
-  font-size: 17px;
-  cursor: pointer;
-  box-shadow:0 10px 25px rgba(103,58,183,.35);
-  transition:.18s ease;
+/* BUTTONS */
+
+.btn-wrap{
+  display:flex;
+  gap:12px;
+  margin-top:22px;
+}
+
+button{
+  flex:1;
+  padding:16px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  color:white;
+
+  background:linear-gradient(45deg,#7b5cff,#b388ff);
+  box-shadow:0 12px 30px rgba(123,92,255,.5);
 }
 
 button:active{
-  transform: scale(.96);
+  transform:scale(.95);
 }
+
+/* COUNTER */
 
 .counter{
-  margin-top:10px;
+  margin-top:14px;
   font-size:14px;
-  color:#666;
+  color:white;
+  opacity:.85;
 }
 
-  </style>
-</head><body><script>
-// smooth floating particles
-const count = window.innerWidth < 500 ? 12 : 20;
+</style>
+</head>
 
-for(let i=0;i<count;i++){
-  const p = document.createElement("div");
-  p.className="particle";
-  p.style.left=Math.random()*100+"vw";
-  p.style.animationDuration=(Math.random()*5+6)+"s";
-  p.style.opacity=Math.random();
-  document.body.appendChild(p);
-}
-</script>  <div class="gift-box">
-    <h2>🎁 14 Special Gifts 🎁</h2><div class="gift-card" id="giftText"></div>
+<body>
+
+<div class="stack"></div>
+
+<div class="gift-box">
+
+<h2>🎁 14 Special Gifts 🎁</h2>
+
+<div class="slider" id="slider"></div>
 
 <div class="counter" id="counter"></div>
 
-<div style="display:flex; gap:10px; margin-top:20px;">
-  <button onclick="prevGift()" style="flex:1; background: linear-gradient(45deg,#5c6bc0,#7986cb);">⬅ Previous</button>
-  <button onclick="nextGift()" style="flex:1;">Next Gift ➜</button>
+<div class="btn-wrap">
+<button onclick="prevGift()">⬅ Previous</button>
+<button onclick="nextGift()">Next ➜</button>
 </div>
 
-  </div>  <script>
-    let gifts = [
-      "💎 Earrings (Already Given)",
-      "🍫 Oreo Chocolate",
-      "🎵 Free Music Subscription (Any App You Like)",
-      "🎬 Movie Night Promise",
-      "📞 Unlimited Call Time With Me",
-      "💌 Daily Good Morning Messages",
-      "🎮 Online Game Together",
-      "🌙 Late Night Chats",
-      "😂 Unlimited Jokes & Smiles",
-      "📸 Virtual Photo Memories",
-      "📝 Personalized Letters",
-      "🌟 Wish Anytime — I Will Try to Fulfill It",
-      "🤝 Always There To Support You",
-      "❤️ My Love & Care Forever"
-    ];
+</div>
 
-    let index = 0;
-    const giftEl = document.getElementById("giftText");
-    const counter = document.getElementById("counter");
+<script>
 
-    function showGift(){
-      giftEl.style.animation="none";
-      giftEl.offsetHeight; // restart animation
-      giftEl.style.animation="giftReveal .5s ease";
-      giftEl.innerHTML = gifts[index];
-      counter.innerHTML = `Gift ${index+1} of ${gifts.length}`;
-    }
+/* PARTICLES */
 
-    showGift();
+for(let i=0;i<14;i++){
+ const p=document.createElement("div");
+ p.className="particle";
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDuration=(Math.random()*6+6)+"s";
+ document.body.appendChild(p);
+}
 
-    function nextGift() {
-      index = (index + 1) % gifts.length;
-      showGift();
-    }
+/* GIFTS */
 
-    function prevGift() {
-      index = (index - 1 + gifts.length) % gifts.length;
-      showGift();
-    }
-  </script></body>
+const gifts = [
+"💎 Earrings (Already Given)",
+"🍫 Oreo Chocolate",
+"🎵 Free Music Subscription",
+"🎬 Movie Night Promise",
+"📞 Unlimited Call Time With Me",
+"💌 Daily Good Morning Messages",
+"🎮 Online Game Together",
+"🌙 Late Night Chats",
+"😂 Unlimited Jokes & Smiles",
+"📸 Virtual Photo Memories",
+"📝 Personalized Letters",
+"🌟 Wish Anytime — I Will Try",
+"🤝 Always There To Support You",
+"❤️ My Love & Care Forever"
+];
+
+const slider=document.getElementById("slider");
+const counter=document.getElementById("counter");
+
+let cards=[];
+let index=0;
+
+/* CREATE SLIDES */
+
+gifts.forEach((gift,i)=>{
+ const card=document.createElement("div");
+ card.className="gift-card";
+ if(i===0) card.classList.add("active");
+ card.innerHTML=gift;
+ slider.appendChild(card);
+ cards.push(card);
+});
+
+function update(){
+ cards.forEach(c=>c.classList.remove("active"));
+ cards[index].classList.add("active");
+
+ counter.innerHTML=`Gift ${index+1} of ${gifts.length}`;
+}
+
+update();
+
+/* NEXT / PREV */
+
+function nextGift(){
+ index=(index+1)%gifts.length;
+ update();
+}
+
+function prevGift(){
+ index=(index-1+gifts.length)%gifts.length;
+ update();
+}
+
+/* AUTO SLIDE (very premium feel) */
+
+setInterval(()=>{
+ nextGift();
+},4000);
+
+</script>
+
+</body>
 </html>
