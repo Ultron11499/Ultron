@@ -10,152 +10,172 @@
 <style>
 
 *{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color: transparent;
+box-sizing:border-box;
+-webkit-tap-highlight-color: transparent;
 }
 
 body{
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:'Poppins',sans-serif;
-  overflow:hidden;
-  background:
-  radial-gradient(circle at 20% 20%, #c3a6ff, transparent 40%),
-  radial-gradient(circle at 80% 80%, #ffb7d5, transparent 40%),
-  linear-gradient(135deg,#7f7fd5,#e684ae);
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Poppins',sans-serif;
+overflow:hidden;
+background:
+radial-gradient(circle at 20% 20%, #c3a6ff, transparent 40%),
+radial-gradient(circle at 80% 80%, #ffb7d5, transparent 40%),
+linear-gradient(135deg,#7f7fd5,#e684ae);
 }
 
 /* PARTICLES */
 
 .particle{
-  position:fixed;
-  width:7px;
-  height:7px;
-  background:white;
-  border-radius:50%;
-  opacity:.5;
-  animation: float linear infinite;
+position:fixed;
+width:7px;
+height:7px;
+background:white;
+border-radius:50%;
+opacity:.5;
+animation: float linear infinite;
 }
 
 @keyframes float{
-  from{ transform: translateY(100vh);}
-  to{ transform: translateY(-10vh);}
+from{ transform: translateY(100vh);}
+to{ transform: translateY(-10vh);}
 }
 
-/* STACK BACKGROUND */
+/* STACK */
 
 .stack{
-  position:absolute;
-  width:92%;
-  max-width:487px; /* +7px */
-  height:540px;
-  border-radius:40px;
-  background:rgba(255,255,255,.15);
-  filter:blur(2px);
-  transform:scale(.9) translateY(30px);
+position:absolute;
+width:94%;
+max-width:520px;
+height:580px;
+border-radius:44px;
+background:rgba(255,255,255,.15);
+filter:blur(2px);
+transform:scale(.9) translateY(35px);
 }
 
-/* MAIN GLASS CARD */
+/* MAIN CARD */
 
 .gift-box{
-  position:relative;
-  width:94%;
-  max-width:467px; /* +7px */
-  padding:48px 34px;
-  border-radius:36px;
-  text-align:center;
+position:relative;
+width:96%;
+max-width:500px;
+padding:56px 38px;
+border-radius:40px;
+text-align:center;
 
-  background:rgba(255,255,255,.22);
-  backdrop-filter:blur(18px);
+background:rgba(255,255,255,.22);
+backdrop-filter:blur(18px);
 
-  box-shadow:0 30px 90px rgba(0,0,0,.35);
-  animation:cardEnter .9s cubic-bezier(.17,.67,.32,1.2);
+box-shadow:0 30px 90px rgba(0,0,0,.35);
+animation:cardEnter .9s cubic-bezier(.17,.67,.32,1.2);
 }
 
 @keyframes cardEnter{
-  from{
-    opacity:0;
-    transform:translateY(60px) scale(.9);
-  }
+from{
+opacity:0;
+transform:translateY(60px) scale(.9);
+}
 }
 
 /* HEADING */
 
 h2{
-  font-size:30px;
-  margin-bottom:18px;
-  font-weight:800;
+font-size:34px;
+margin-bottom:22px;
+font-weight:800;
 
-  background:linear-gradient(90deg,#fff,#ffe0f3);
-  -webkit-background-clip:text;
-  color:transparent;
+background:linear-gradient(90deg,#fff,#ffe0f3);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 /* SLIDER */
 
 .slider{
-  position:relative;
-  overflow:hidden;
-  height:130px;
+position:relative;
+overflow:hidden;
+height:150px;
 }
 
 .gift-card{
-  position:absolute;
-  inset:0;
-  border-radius:26px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:22px;
-  font-size:22px;
-  font-weight:600;
-  color:white;
+position:absolute;
+inset:0;
+border-radius:28px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:26px;
+font-size:24px;
+font-weight:600;
+color:white;
 
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
+box-shadow:0 15px 40px rgba(0,0,0,.25);
 
-  opacity:0;
-  transform:translateX(80px) scale(.9);
-  transition:.6s cubic-bezier(.17,.67,.32,1.25);
+opacity:0;
+transform:translateX(80px) scale(.9);
+transition:.6s cubic-bezier(.17,.67,.32,1.25);
 }
 
 .gift-card.active{
-  opacity:1;
-  transform:translateX(0) scale(1);
+opacity:1;
+transform:translateX(0) scale(1);
+}
+
+/* WAIT TEXT (HIGHLIGHTED) */
+
+.wait-text{
+margin-top:20px;
+font-size:18px;
+font-weight:700;
+color:white;
+
+animation:glow 1.5s infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 5px #fff,0 0 10px #ff9de6;
+}
+to{
+text-shadow:0 0 12px #fff,0 0 25px #ff6ec4;
+}
 }
 
 /* COUNTER */
 
 .counter{
-  margin-top:16px;
-  font-size:14px;
-  color:white;
-  opacity:.9;
+margin-top:10px;
+font-size:15px;
+color:white;
+opacity:.95;
 }
 
-/* NEXT PAGE BUTTON */
+/* NEXT BUTTON */
 
 .next-page{
-  margin-top:26px;
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:40px;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
-  color:white;
+margin-top:30px;
+width:100%;
+padding:20px;
+border:none;
+border-radius:44px;
+font-size:19px;
+font-weight:700;
+cursor:pointer;
+color:white;
 
-  background:linear-gradient(45deg,#ff6ec4,#7873f5);
-  box-shadow:0 15px 35px rgba(120,115,245,.6);
+background:linear-gradient(45deg,#ff6ec4,#7873f5);
+box-shadow:0 15px 35px rgba(120,115,245,.6);
 }
 
 .next-page:active{
-  transform:scale(.95);
+transform:scale(.95);
 }
 
 </style>
@@ -173,6 +193,10 @@ h2{
 
 <div class="counter" id="counter"></div>
 
+<div class="wait-text">
+✨ Please wait... surprises are being revealed ✨
+</div>
+
 <button class="next-page" onclick="goNextPage()">
 Next Webpage ➜
 </button>
@@ -183,12 +207,12 @@ Next Webpage ➜
 
 /* PARTICLES */
 
-for(let i=0;i<14;i++){
- const p=document.createElement("div");
- p.className="particle";
- p.style.left=Math.random()*100+"vw";
- p.style.animationDuration=(Math.random()*6+6)+"s";
- document.body.appendChild(p);
+for(let i=0;i<16;i++){
+const p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(Math.random()*6+6)+"s";
+document.body.appendChild(p);
 }
 
 /* GIFTS */
@@ -217,35 +241,34 @@ let cards=[];
 let index=0;
 
 gifts.forEach((gift,i)=>{
- const card=document.createElement("div");
- card.className="gift-card";
- if(i===0) card.classList.add("active");
- card.innerHTML=gift;
- slider.appendChild(card);
- cards.push(card);
+const card=document.createElement("div");
+card.className="gift-card";
+if(i===0) card.classList.add("active");
+card.innerHTML=gift;
+slider.appendChild(card);
+cards.push(card);
 });
 
 function update(){
- cards.forEach(c=>c.classList.remove("active"));
- cards[index].classList.add("active");
+cards.forEach(c=>c.classList.remove("active"));
+cards[index].classList.add("active");
 
- counter.innerHTML=`Gift ${index+1} of ${gifts.length}`;
+counter.innerHTML=`Gift ${index+1} of ${gifts.length}`;
 }
 
 update();
 
-/* AUTO SLIDE */
+/* AUTO SLIDE — NOW 6 SECONDS */
 
 setInterval(()=>{
- index=(index+1)%gifts.length;
- update();
-},4000);
+index=(index+1)%gifts.length;
+update();
+},6000);
 
 /* NEXT PAGE */
 
 function goNextPage(){
- window.location.href="next.html"; 
- /* Change next.html to your next webpage file name */
+window.location.href="https://ultron11499.github.io/Ultron/index4.html";
 }
 
 </script>
