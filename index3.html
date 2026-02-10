@@ -38,12 +38,12 @@ body {
 
 .gift-box {
   width: 100%;
-  max-width: 370px;
+  max-width: 420px; /* increased size */
   background: rgba(255,255,255,0.95);
-  padding: 30px 22px;
-  border-radius: 28px;
+  padding: 40px 28px; /* more inner space */
+  border-radius: 32px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+  box-shadow: 0 25px 70px rgba(0,0,0,.22);
   backdrop-filter: blur(10px);
   animation: cardEnter .8s cubic-bezier(.17,.67,.32,1.25);
   transform: translateZ(0);
@@ -131,7 +131,10 @@ for(let i=0;i<count;i++){
 
 <div class="counter" id="counter"></div>
 
-<button onclick="nextGift()">Open Next Gift ➜</button>
+<div style="display:flex; gap:10px; margin-top:20px;">
+  <button onclick="prevGift()" style="flex:1; background: linear-gradient(45deg,#5c6bc0,#7986cb);">⬅ Previous</button>
+  <button onclick="nextGift()" style="flex:1;">Next Gift ➜</button>
+</div>
 
   </div>  <script>
     let gifts = [
@@ -167,6 +170,11 @@ for(let i=0;i<count;i++){
 
     function nextGift() {
       index = (index + 1) % gifts.length;
+      showGift();
+    }
+
+    function prevGift() {
+      index = (index - 1 + gifts.length) % gifts.length;
       showGift();
     }
   </script></body>
