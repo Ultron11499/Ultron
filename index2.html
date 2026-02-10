@@ -1,145 +1,296 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Missing You</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>*{
-  box-sizing: border-box;
+<title>Missing You</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  box-sizing:border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #ff758c, #ff7eb3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', sans-serif;
-  color: white;
-  padding: 15px;
-  overflow: hidden;
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Poppins',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:white;
+
+  background:
+  radial-gradient(circle at 20% 20%, #ff9fb3, transparent 40%),
+  radial-gradient(circle at 80% 70%, #ffc3d1, transparent 40%),
+  linear-gradient(135deg,#ff758c,#ff7eb3);
 }
 
-/* Smooth floating hearts */
+/* FLOATING HEARTS */
 .floating-heart{
-  position: fixed;
-  bottom: -20px;
-  font-size: 18px;
-  opacity: .7;
-  animation: floatUp linear infinite;
-  pointer-events: none;
-  will-change: transform;
+  position:fixed;
+  bottom:-20px;
+  animation:floatUp linear infinite;
+  opacity:.7;
+  pointer-events:none;
 }
 
 @keyframes floatUp{
-  from{
-    transform: translate3d(0,0,0);
-    opacity:.8;
-  }
   to{
-    transform: translate3d(0,-110vh,0);
+    transform:translateY(-110vh);
     opacity:0;
   }
 }
 
-.box {
-  width: 100%;
-  max-width: 360px;
-  background: rgba(255,255,255,0.18);
-  padding: 28px 22px;
-  border-radius: 26px;
-  text-align: center;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 18px 50px rgba(0,0,0,.25);
-  animation: cardEnter .8s cubic-bezier(.17,.67,.32,1.2);
-  transform: translateZ(0);
+/* FALLING ROSE PETALS */
+.petal{
+  position:fixed;
+  top:-20px;
+  animation:fall linear infinite;
+  pointer-events:none;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+/* LUXURY CARD */
+.box{
+  width:100%;
+  max-width:420px;
+  padding:32px 26px;
+  text-align:center;
+  border-radius:28px;
+
+  background:
+  linear-gradient(rgba(255,255,255,.18), rgba(255,255,255,.08)) padding-box,
+  linear-gradient(45deg,#fff,#ffb6c1,#fff) border-box;
+
+  border:2px solid transparent;
+  backdrop-filter:blur(16px);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  animation:cardEnter .8s cubic-bezier(.17,.67,.32,1.2);
+}
+
+.box:hover{
+  transform:translateY(-6px);
+  transition:.3s;
 }
 
 @keyframes cardEnter{
-  from{opacity:0; transform: translateY(40px) scale(.95);} 
-  to{opacity:1; transform: translateY(0) scale(1);} 
+  from{opacity:0; transform:translateY(40px) scale(.95);}
+  to{opacity:1;}
 }
 
-.heart {
-  font-size: clamp(60px, 15vw, 75px);
-  animation: heartbeat 1.6s ease-in-out infinite;
-  will-change: transform;
-  filter: drop-shadow(0 6px 12px rgba(255,0,70,.5));
+/* HEART */
+.heart{
+  font-size:72px;
+  animation:heartbeat 1.6s infinite, glow 2.5s infinite;
 }
 
 @keyframes heartbeat{
-  0%,100%{ transform: scale(1);} 
-  25%{ transform: scale(1.08);} 
-  50%{ transform: scale(0.95);} 
-  75%{ transform: scale(1.05);} 
+  25%{transform:scale(1.08);}
+  50%{transform:scale(.95);}
 }
 
-p {
-  font-size: 16px;
-  line-height: 1.65;
-  margin-top: 12px;
-  color: #fff;
+@keyframes glow{
+  0%,100%{filter:drop-shadow(0 0 6px #ff4d88);}
+  50%{filter:drop-shadow(0 0 22px #ff1f6a);}
+}
+
+/* PARTICLE NAME */
+.name{
+  font-size:28px;
+  font-weight:700;
+  color:#ffe4ec;
+  margin-top:6px;
+  position:relative;
+}
+
+/* TEXT */
+p{
+  font-size:16px;
+  line-height:1.7;
 }
 
 b{
-  color:#ffe4ec;
-  font-weight:600;
+  color:#fff0f6;
 }
 
-button {
-  margin-top: 18px;
-  padding: 14px;
-  width: 100%;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(45deg,#ffffff,#ffe6ee);
-  color: #ff4081;
-  font-size: 17px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,.2);
-  transition: transform .18s ease, box-shadow .18s ease;
+/* BUTTON */
+button{
+  margin-top:18px;
+  padding:14px;
+  width:100%;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ffffff,#ffe6ee);
+  color:#ff4081;
+  font-size:17px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
 button:active{
-  transform: scale(.96);
-  box-shadow: 0 6px 14px rgba(0,0,0,.18);
+  transform:scale(.96);
 }
 
-  </style>
-</head><body><script>
-  // fewer hearts for smoother mobile animation
-  const count = window.innerWidth < 500 ? 7 : 12;
+/* POPUP */
+.popup{
+  position:fixed;
+  bottom:-120px;
+  left:50%;
+  transform:translateX(-50%);
+  background:white;
+  color:#ff4081;
+  padding:18px 26px;
+  border-radius:18px;
+  font-weight:500;
+  box-shadow:0 10px 40px rgba(0,0,0,.3);
+  transition:.6s;
+}
 
-  for(let i=0;i<count;i++){
-    const h = document.createElement("div");
-    h.className="floating-heart";
-    h.innerHTML="❤";
-    h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration=(Math.random()*4+5)+"s";
-    h.style.fontSize=(Math.random()*14+10)+"px";
-    document.body.appendChild(h);
+.popup.show{
+  bottom:40px;
+}
+
+/* SPARKLES */
+.sparkle{
+  position:fixed;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:white;
+  pointer-events:none;
+  animation:spark .8s linear forwards;
+}
+
+@keyframes spark{
+  to{
+    transform:translateY(-40px);
+    opacity:0;
   }
-</script>  <div class="box">
-    <div class="heart">❤️</div><p>
-  Today is your birthday, but you are going to the temple…
-  and I am <b>missing you more than words can explain.</b> 😔
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8a08cdbcb.mp3?filename=romantic-love-11738.mp3">
+</audio>
+
+<div class="box">
+
+<div class="heart">❤️</div>
+
+<div class="name" id="name">Sharmila</div>
+
+<p>
+Today is your birthday, but you are going to the temple…  
+and I am <b>missing you more than words can explain.</b> 😔
 </p>
 
 <p>
-  Even if we are not together right now,
-  my heart is always with you.
-  Wherever you go, my thoughts quietly follow. 💫
+Even if we are not together right now,  
+my heart is always with you. Wherever you go,  
+my thoughts quietly follow. 💫
 </p>
 
 <p>
-  Remember just one thing…
-  <b>I will always care for you, support you, and love you.</b> 💕
+Remember just one thing…  
+<b>I will always care for you, support you, and love you.</b> 💕
 </p>
 
-<button onclick="alert('No distance can reduce how special you are to me ❤️')">
-  Next ➜
-</button>
+<p>
+If I could gift you one thing…  
+it would be the ability to see yourself through my eyes —  
+then you would know how truly special you are.
+</p>
 
-  </div>
+<button onclick="openMessage()">Next ➜</button>
+
+</div>
+
+<div class="popup" id="popup">
+No distance can reduce how special you are to me ❤️
+</div>
+
+<script>
+
+/* FLOATING HEARTS */
+const heartCount = window.innerWidth < 500 ? 8 : 14;
+
+for(let i=0;i<heartCount;i++){
+ let h=document.createElement("div");
+ h.className="floating-heart";
+ h.innerHTML="❤";
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(Math.random()*14+12)+"px";
+ h.style.animationDuration=(Math.random()*5+5)+"s";
+ document.body.appendChild(h);
+}
+
+/* ROSE PETALS */
+setInterval(()=>{
+ let p=document.createElement("div");
+ p.className="petal";
+ p.innerHTML="🌸";
+ p.style.left=Math.random()*100+"vw";
+ p.style.fontSize=(Math.random()*10+14)+"px";
+ p.style.animationDuration=(Math.random()*5+6)+"s";
+ document.body.appendChild(p);
+
+ setTimeout(()=>p.remove(),11000);
+},500);
+
+/* POPUP + MUSIC */
+function openMessage(){
+ document.getElementById("popup").classList.add("show");
+ document.getElementById("music").play();
+}
+
+/* SPARKLES */
+document.addEventListener("touchstart",sparkle);
+document.addEventListener("mousemove",sparkle);
+
+function sparkle(e){
+ let x = e.touches ? e.touches[0].clientX : e.clientX;
+ let y = e.touches ? e.touches[0].clientY : e.clientY;
+
+ let s=document.createElement("div");
+ s.className="sparkle";
+ s.style.left=x+"px";
+ s.style.top=y+"px";
+
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),800);
+}
+
+/* NAME PARTICLES */
+const name=document.getElementById("name");
+
+setInterval(()=>{
+ let rect=name.getBoundingClientRect();
+ let s=document.createElement("div");
+ s.className="sparkle";
+
+ s.style.left=(rect.left + Math.random()*rect.width)+"px";
+ s.style.top=(rect.top + rect.height/2)+"px";
+
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),800);
+
+},120);
+
+</script>
+
 </body>
 </html>
