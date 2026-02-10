@@ -1,0 +1,173 @@
+<!DOCTYPE html><html>
+<head>
+  <title>14 Gifts for You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  padding: 15px;
+}
+
+/* floating particles for premium feel */
+.particle{
+  position: fixed;
+  width:8px;
+  height:8px;
+  background:white;
+  border-radius:50%;
+  opacity:.6;
+  animation: float linear infinite;
+  pointer-events:none;
+}
+
+@keyframes float{
+  from{ transform: translate3d(0,100vh,0); }
+  to{ transform: translate3d(0,-10vh,0); }
+}
+
+.gift-box {
+  width: 100%;
+  max-width: 370px;
+  background: rgba(255,255,255,0.95);
+  padding: 30px 22px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+  backdrop-filter: blur(10px);
+  animation: cardEnter .8s cubic-bezier(.17,.67,.32,1.25);
+  transform: translateZ(0);
+}
+
+@keyframes cardEnter{
+  from{opacity:0; transform: translateY(40px) scale(.95);} 
+  to{opacity:1; transform: translateY(0) scale(1);} 
+}
+
+h2 {
+  color: #673ab7;
+  margin-bottom: 10px;
+  letter-spacing: .5px;
+}
+
+/* Gift card animation */
+.gift-card{
+  margin-top:20px;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  border-radius:20px;
+  padding:28px 18px;
+  color:white;
+  font-size:22px;
+  font-weight:600;
+  min-height:95px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  animation: giftReveal .5s ease;
+  will-change: transform;
+}
+
+@keyframes giftReveal{
+  from{
+    opacity:0;
+    transform: scale(.85) rotateY(40deg);
+  }
+  to{
+    opacity:1;
+    transform: scale(1) rotateY(0);
+  }
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px;
+  width:100%;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg,#673ab7,#9575cd);
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow:0 10px 25px rgba(103,58,183,.35);
+  transition:.18s ease;
+}
+
+button:active{
+  transform: scale(.96);
+}
+
+.counter{
+  margin-top:10px;
+  font-size:14px;
+  color:#666;
+}
+
+  </style>
+</head><body><script>
+// smooth floating particles
+const count = window.innerWidth < 500 ? 12 : 20;
+
+for(let i=0;i<count;i++){
+  const p = document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(Math.random()*5+6)+"s";
+  p.style.opacity=Math.random();
+  document.body.appendChild(p);
+}
+</script>  <div class="gift-box">
+    <h2>🎁 14 Special Gifts 🎁</h2><div class="gift-card" id="giftText"></div>
+
+<div class="counter" id="counter"></div>
+
+<button onclick="nextGift()">Open Next Gift ➜</button>
+
+  </div>  <script>
+    let gifts = [
+      "💎 Earrings (Already Given)",
+      "🍫 Oreo Chocolate",
+      "🎵 Free Music Subscription (Any App You Like)",
+      "🎬 Movie Night Promise",
+      "📞 Unlimited Call Time With Me",
+      "💌 Daily Good Morning Messages",
+      "🎮 Online Game Together",
+      "🌙 Late Night Chats",
+      "😂 Unlimited Jokes & Smiles",
+      "📸 Virtual Photo Memories",
+      "📝 Personalized Letters",
+      "🌟 Wish Anytime — I Will Try to Fulfill It",
+      "🤝 Always There To Support You",
+      "❤️ My Love & Care Forever"
+    ];
+
+    let index = 0;
+    const giftEl = document.getElementById("giftText");
+    const counter = document.getElementById("counter");
+
+    function showGift(){
+      giftEl.style.animation="none";
+      giftEl.offsetHeight; // restart animation
+      giftEl.style.animation="giftReveal .5s ease";
+      giftEl.innerHTML = gifts[index];
+      counter.innerHTML = `Gift ${index+1} of ${gifts.length}`;
+    }
+
+    showGift();
+
+    function nextGift() {
+      index = (index + 1) % gifts.length;
+      showGift();
+    }
+  </script></body>
+</html>
