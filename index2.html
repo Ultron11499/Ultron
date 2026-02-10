@@ -60,11 +60,11 @@ body{
   }
 }
 
-/* MOBILE-PERFECT BIG CARD */
+/* CARD */
 .box{
   width:95%;
-  max-width:540px;      /* Bigger for phones */
-  padding:46px 36px;    /* More breathing room */
+  max-width:540px;
+  padding:46px 36px;
   text-align:center;
   border-radius:34px;
 
@@ -83,7 +83,6 @@ body{
   to{opacity:1;}
 }
 
-/* HEART */
 .heart{
   font-size:90px;
   animation:heartbeat 1.6s infinite, glow 2.5s infinite;
@@ -99,7 +98,6 @@ body{
   50%{filter:drop-shadow(0 0 28px #ff1f6a);}
 }
 
-/* NAME */
 .name{
   font-size:34px;
   font-weight:700;
@@ -107,17 +105,11 @@ body{
   margin-top:10px;
 }
 
-/* TEXT */
 p{
   font-size:18px;
   line-height:1.8;
 }
 
-b{
-  color:#fff0f6;
-}
-
-/* BUTTON */
 button{
   margin-top:22px;
   padding:18px;
@@ -135,7 +127,6 @@ button:active{
   transform:scale(.96);
 }
 
-/* POPUP */
 .popup{
   position:fixed;
   bottom:-140px;
@@ -157,7 +148,6 @@ button:active{
   bottom:50px;
 }
 
-/* SPARKLES */
 .sparkle{
   position:fixed;
   width:8px;
@@ -246,10 +236,14 @@ setInterval(()=>{
  setTimeout(()=>p.remove(),11000);
 },500);
 
-/* POPUP + MUSIC */
+/* POPUP + MUSIC + REDIRECT */
 function openMessage(){
  document.getElementById("popup").classList.add("show");
  document.getElementById("music").play();
+
+ setTimeout(()=>{
+   window.location.href="https://ultron11499.github.io/Ultron/index3.html";
+ },2000);
 }
 
 /* SPARKLES */
