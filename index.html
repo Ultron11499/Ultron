@@ -25,16 +25,31 @@ body{
     100%{background-position:0% 50%;}
 }
 
+/* Falling Roses */
+.rose{
+    position:absolute;
+    top:-50px;
+    font-size:24px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
+
 /* Bigger Glass Card */
 .card{
-    width:460px;
-    padding:45px;
-    border-radius:30px;
+    width:500px;
+    padding:50px;
+    border-radius:35px;
     text-align:center;
     backdrop-filter:blur(15px);
     background:rgba(255,255,255,0.25);
-    box-shadow:0 0 40px rgba(0,0,0,0.25);
+    box-shadow:0 0 50px rgba(0,0,0,0.25);
     animation:float 4s ease-in-out infinite;
+    z-index:10;
 }
 
 @keyframes float{
@@ -42,18 +57,11 @@ body{
     50%{transform:translateY(-12px);}
 }
 
-/* Glow Title */
 h1{
-    font-size:40px;
+    font-size:42px;
     background:linear-gradient(90deg,gold,orange);
     -webkit-background-clip:text;
     color:transparent;
-    text-shadow:0 0 20px rgba(255,215,0,0.6);
-}
-
-h2{
-    color:#ff2e88;
-    font-size:30px;
 }
 
 .date{
@@ -61,9 +69,17 @@ h2{
     font-weight:bold;
 }
 
+/* Particle Name */
+#particleName{
+    font-size:34px;
+    color:#ff2e88;
+    position:relative;
+    display:inline-block;
+}
+
 /* Cake */
 .cake{
-    font-size:95px;
+    font-size:100px;
     animation:bounce 1.5s infinite;
 }
 
@@ -72,7 +88,6 @@ h2{
     50%{transform:translateY(-15px);}
 }
 
-/* Button */
 button{
     margin-top:20px;
     padding:14px 35px;
@@ -89,7 +104,6 @@ button:hover{
     transform:scale(1.1);
 }
 
-/* Hidden Message */
 #message{
     display:none;
     margin-top:15px;
@@ -144,41 +158,54 @@ button:hover{
 
 <h1>🎉 HAPPY BIRTHDAY 🎉</h1>
 
-<h2>✨ Sharmila ✨</h2>
+<h2 id="particleName">✨ Sharmila ✨</h2>
 
 <p class="date">11 February</p>
 
 <p>
-May your day be filled with laughter,  
-your year with success,  
-and your life with endless happiness 💖
+May your day be filled with laughter, joy, and magical moments 💖  
+You are growing into someone truly wonderful!
 </p>
 
-<p>
-🎂 Today you turn <b>14</b> —  
-a beautiful age full of dreams, magic, and bright futures!
-</p>
+<p>🎂 Turning <b>14</b> is the start of beautiful dreams!</p>
 
 <div class="cake">🎂</div>
 
 <button onclick="celebrate()">Open Surprise 🎁</button>
 
 <div id="message">
-💖 You are special, amazing, and one of a kind!  
-Never stop smiling and shining like a star 🌟  
-Happy Birthday once again! 🎉
+🌸 Stay happy, keep shining, and always believe in yourself.  
+You are more special than words can say! 💕  
+Happy Birthday again! 🎉
 </div>
 
 </div>
 
 <script>
 
-/* Fireworks + Message */
+/* Falling Roses Generator */
+function createRose(){
+    let rose=document.createElement("div");
+    rose.className="rose";
+    rose.innerHTML="🌹";
+
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.animationDuration=(4+Math.random()*4)+"s";
+    rose.style.fontSize=(20+Math.random()*20)+"px";
+
+    document.body.appendChild(rose);
+
+    setTimeout(()=>rose.remove(),8000);
+}
+
+setInterval(createRose,300);
+
+/* Fireworks */
 function celebrate(){
 
 document.getElementById("message").style.display="block";
 
-for(let i=0;i<70;i++){
+for(let i=0;i<80;i++){
 let fire=document.createElement("div");
 fire.className="firework";
 
@@ -186,14 +213,13 @@ fire.style.background=`hsl(${Math.random()*360},100%,50%)`;
 fire.style.left=window.innerWidth/2+"px";
 fire.style.top=window.innerHeight/2+"px";
 
-fire.style.setProperty('--x',(Math.random()-0.5)*600+'px');
-fire.style.setProperty('--y',(Math.random()-0.5)*600+'px');
+fire.style.setProperty('--x',(Math.random()-0.5)*700+'px');
+fire.style.setProperty('--y',(Math.random()-0.5)*700+'px');
 
 document.body.appendChild(fire);
 
 setTimeout(()=>fire.remove(),1000);
 }
-
 }
 
 /* Sparkle Effect */
@@ -214,6 +240,23 @@ document.body.appendChild(s);
 
 setTimeout(()=>s.remove(),800);
 }
+
+/* Name Particles */
+const nameEl=document.getElementById("particleName");
+
+setInterval(()=>{
+    let p=document.createElement("div");
+    p.className="sparkle";
+
+    let rect=nameEl.getBoundingClientRect();
+
+    p.style.left=(rect.left + Math.random()*rect.width)+"px";
+    p.style.top=(rect.top + rect.height/2)+"px";
+
+    document.body.appendChild(p);
+
+    setTimeout(()=>p.remove(),800);
+},120);
 
 </script>
 
