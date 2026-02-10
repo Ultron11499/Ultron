@@ -46,7 +46,7 @@ body{
   }
 }
 
-/* FALLING ROSE PETALS */
+/* FALLING PETALS */
 .petal{
   position:fixed;
   top:-20px;
@@ -60,27 +60,22 @@ body{
   }
 }
 
-/* LUXURY CARD */
+/* MOBILE-PERFECT BIG CARD */
 .box{
-  width:100%;
-  max-width:420px;
-  padding:32px 26px;
+  width:95%;
+  max-width:540px;      /* Bigger for phones */
+  padding:46px 36px;    /* More breathing room */
   text-align:center;
-  border-radius:28px;
+  border-radius:34px;
 
   background:
   linear-gradient(rgba(255,255,255,.18), rgba(255,255,255,.08)) padding-box,
   linear-gradient(45deg,#fff,#ffb6c1,#fff) border-box;
 
   border:2px solid transparent;
-  backdrop-filter:blur(16px);
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  backdrop-filter:blur(18px);
+  box-shadow:0 25px 80px rgba(0,0,0,.45);
   animation:cardEnter .8s cubic-bezier(.17,.67,.32,1.2);
-}
-
-.box:hover{
-  transform:translateY(-6px);
-  transition:.3s;
 }
 
 @keyframes cardEnter{
@@ -90,7 +85,7 @@ body{
 
 /* HEART */
 .heart{
-  font-size:72px;
+  font-size:90px;
   animation:heartbeat 1.6s infinite, glow 2.5s infinite;
 }
 
@@ -100,23 +95,22 @@ body{
 }
 
 @keyframes glow{
-  0%,100%{filter:drop-shadow(0 0 6px #ff4d88);}
-  50%{filter:drop-shadow(0 0 22px #ff1f6a);}
+  0%,100%{filter:drop-shadow(0 0 8px #ff4d88);}
+  50%{filter:drop-shadow(0 0 28px #ff1f6a);}
 }
 
-/* PARTICLE NAME */
+/* NAME */
 .name{
-  font-size:28px;
+  font-size:34px;
   font-weight:700;
   color:#ffe4ec;
-  margin-top:6px;
-  position:relative;
+  margin-top:10px;
 }
 
 /* TEXT */
 p{
-  font-size:16px;
-  line-height:1.7;
+  font-size:18px;
+  line-height:1.8;
 }
 
 b{
@@ -125,16 +119,16 @@ b{
 
 /* BUTTON */
 button{
-  margin-top:18px;
-  padding:14px;
+  margin-top:22px;
+  padding:18px;
   width:100%;
   border:none;
-  border-radius:30px;
+  border-radius:40px;
   background:linear-gradient(45deg,#ffffff,#ffe6ee);
   color:#ff4081;
-  font-size:17px;
+  font-size:19px;
   cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 button:active{
@@ -144,20 +138,23 @@ button:active{
 /* POPUP */
 .popup{
   position:fixed;
-  bottom:-120px;
+  bottom:-140px;
   left:50%;
   transform:translateX(-50%);
+  width:85%;
+  max-width:420px;
   background:white;
   color:#ff4081;
-  padding:18px 26px;
-  border-radius:18px;
+  padding:22px;
+  border-radius:22px;
   font-weight:500;
+  text-align:center;
   box-shadow:0 10px 40px rgba(0,0,0,.3);
   transition:.6s;
 }
 
 .popup.show{
-  bottom:40px;
+  bottom:50px;
 }
 
 /* SPARKLES */
@@ -189,7 +186,7 @@ button:active{
 
 <div class="box">
 
-<div class="heart">🤍</div>
+<div class="heart">❤️</div>
 
 <div class="name" id="name">Sharmila</div>
 
@@ -225,26 +222,24 @@ No distance can reduce how special you are to me ❤️
 
 <script>
 
-/* FLOATING HEARTS */
-const heartCount = window.innerWidth < 500 ? 8 : 14;
-
-for(let i=0;i<heartCount;i++){
+/* HEARTS */
+for(let i=0;i<10;i++){
  let h=document.createElement("div");
  h.className="floating-heart";
  h.innerHTML="❤";
  h.style.left=Math.random()*100+"vw";
- h.style.fontSize=(Math.random()*14+12)+"px";
+ h.style.fontSize=(Math.random()*16+14)+"px";
  h.style.animationDuration=(Math.random()*5+5)+"s";
  document.body.appendChild(h);
 }
 
-/* ROSE PETALS */
+/* PETALS */
 setInterval(()=>{
  let p=document.createElement("div");
  p.className="petal";
  p.innerHTML="🌸";
  p.style.left=Math.random()*100+"vw";
- p.style.fontSize=(Math.random()*10+14)+"px";
+ p.style.fontSize=(Math.random()*12+16)+"px";
  p.style.animationDuration=(Math.random()*5+6)+"s";
  document.body.appendChild(p);
 
@@ -259,11 +254,10 @@ function openMessage(){
 
 /* SPARKLES */
 document.addEventListener("touchstart",sparkle);
-document.addEventListener("mousemove",sparkle);
 
 function sparkle(e){
- let x = e.touches ? e.touches[0].clientX : e.clientX;
- let y = e.touches ? e.touches[0].clientY : e.clientY;
+ let x=e.touches[0].clientX;
+ let y=e.touches[0].clientY;
 
  let s=document.createElement("div");
  s.className="sparkle";
