@@ -39,7 +39,7 @@ body{
     }
 }
 
-/* Bigger Glass Card */
+/* Glass Card */
 .card{
     width:500px;
     padding:50px;
@@ -69,7 +69,6 @@ h1{
     font-weight:bold;
 }
 
-/* Particle Name */
 #particleName{
     font-size:34px;
     color:#ff2e88;
@@ -77,7 +76,6 @@ h1{
     display:inline-block;
 }
 
-/* Cake */
 .cake{
     font-size:100px;
     animation:bounce 1.5s infinite;
@@ -171,7 +169,7 @@ You are growing into someone truly wonderful!
 
 <div class="cake">🎂</div>
 
-<button onclick="celebrate()">Open Surprise 🎁</button>
+<button onclick="openSurprise()">Open Surprise 🎁</button>
 
 <div id="message">
 🌸 Stay happy, keep shining, and always believe in yourself.  
@@ -183,7 +181,7 @@ Happy Birthday again! 🎉
 
 <script>
 
-/* Falling Roses Generator */
+/* Falling Roses */
 function createRose(){
     let rose=document.createElement("div");
     rose.className="rose";
@@ -194,7 +192,6 @@ function createRose(){
     rose.style.fontSize=(20+Math.random()*20)+"px";
 
     document.body.appendChild(rose);
-
     setTimeout(()=>rose.remove(),8000);
 }
 
@@ -222,6 +219,15 @@ setTimeout(()=>fire.remove(),1000);
 }
 }
 
+/* Redirect Function */
+function openSurprise(){
+    celebrate();
+
+    setTimeout(()=>{
+        window.location.href="https://ultron11499.github.io/Ultron/index2.html";
+    },1500);
+}
+
 /* Sparkle Effect */
 document.addEventListener("touchstart",sparkle);
 document.addEventListener("mousemove",sparkle);
@@ -237,7 +243,6 @@ s.style.left=x+"px";
 s.style.top=y+"px";
 
 document.body.appendChild(s);
-
 setTimeout(()=>s.remove(),800);
 }
 
@@ -254,7 +259,6 @@ setInterval(()=>{
     p.style.top=(rect.top + rect.height/2)+"px";
 
     document.body.appendChild(p);
-
     setTimeout(()=>p.remove(),800);
 },120);
 
