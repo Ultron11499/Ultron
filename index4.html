@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Thank You ❤️</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+-webkit-tap-highlight-color: transparent;
+}
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Poppins',sans-serif;
+overflow:hidden;
+
+background:
+radial-gradient(circle at 20% 20%, #ffd1dc, transparent 40%),
+radial-gradient(circle at 80% 80%, #ffe0b2, transparent 40%),
+linear-gradient(135deg,#ff9a9e,#fad0c4);
+}
+
+/* GLASS CARD */
+
+.final{
+width:92%;
+max-width:420px;
+padding:40px 28px;
+border-radius:32px;
+text-align:center;
+
+background:rgba(255,255,255,.25);
+backdrop-filter:blur(18px);
+
+box-shadow:0 25px 70px rgba(0,0,0,.35);
+
+animation:enter .9s cubic-bezier(.17,.67,.32,1.2);
+}
+
+@keyframes enter{
+from{
+opacity:0;
+transform:translateY(60px) scale(.9);
+}
+}
+
+/* HEARTS */
+
+.heart{
+position:fixed;
+font-size:18px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+from{ transform:translateY(-10vh);}
+to{ transform:translateY(110vh);}
+}
+
+/* TOUCH SPARKLE */
+
+.sparkle{
+position:fixed;
+width:10px;
+height:10px;
+border-radius:50%;
+background:white;
+pointer-events:none;
+animation:spark .6s linear forwards;
+}
+
+@keyframes spark{
+to{
+transform:scale(0);
+opacity:0;
+}
+}
+
+/* TEXT */
+
+.msg{
+margin-top:10px;
+font-size:17px;
+color:#444;
+line-height:1.6;
+}
+
+.thanks{
+font-size:30px;
+font-weight:800;
+margin-top:18px;
+
+background:linear-gradient(90deg,#ff4e8a,#ff6a88);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* CAKE */
+
+.cake{
+font-size:85px;
+cursor:pointer;
+margin-top:18px;
+animation:shake 1.2s infinite;
+}
+
+@keyframes shake{
+0%{transform:rotate(0);}
+50%{transform:rotate(4deg);}
+100%{transform:rotate(0);}
+}
+
+#eatText{
+margin-top:10px;
+font-weight:600;
+color:#e91e63;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="final">
+
+<div style="font-size:26px;">❤️❤️❤️</div>
+
+<p class="msg">
+I want you to get good marks in your 10th class 📚 <br>
+Always believe in yourself 🌟 <br>
+Wish you a very Happy Birthday 🎉
+</p>
+
+<div class="cake" onclick="cutCake()">🎂</div>
+
+<p id="eatText"></p>
+
+<div class="thanks">Thank You 💖</div>
+
+</div>
+
+<script>
+
+/* FALLING HEARTS */
+
+for(let i=0;i<18;i++){
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*5+5)+"s";
+heart.style.opacity=Math.random();
+document.body.appendChild(heart);
+}
+
+/* TOUCH SPARKLES */
+
+document.addEventListener("touchstart",(e)=>{
+for(let i=0;i<6;i++){
+const s=document.createElement("div");
+s.className="sparkle";
+
+s.style.left=e.touches[0].clientX+"px";
+s.style.top=e.touches[0].clientY+"px";
+
+document.body.appendChild(s);
+
+setTimeout(()=>s.remove(),600);
+}
+});
+
+/* CAKE CELEBRATION */
+
+function cutCake(){
+
+document.getElementById("eatText").innerHTML=
+"🍰 Cake cut! Make a wish and take the first bite 😋";
+
+for(let i=0;i<25;i++){
+const burst=document.createElement("div");
+burst.className="sparkle";
+
+burst.style.left=(window.innerWidth/2)+"px";
+burst.style.top=(window.innerHeight/2)+"px";
+burst.style.background="gold";
+
+document.body.appendChild(burst);
+
+setTimeout(()=>burst.remove(),700);
+}
+
+}
+
+</script>
+
+</body>
+</html>
